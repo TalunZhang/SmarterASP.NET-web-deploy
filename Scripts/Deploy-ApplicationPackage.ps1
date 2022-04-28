@@ -24,7 +24,7 @@ $targetPath = $recycleApp + $destination
     "-enableRule:AppOffline"
     "-disableLink:AppPoolExtension",
     "-disableLink:ContentExtension",
-    "-disableLink:CertificateExtension"
+    "-disableLink:CertificateExtension",
     "-source:contentPath=${contentPath}," +
     ("-dest:" + 
         "contentPath=${targetPath}," +
