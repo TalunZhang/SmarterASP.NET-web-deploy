@@ -6,8 +6,7 @@ inputs:
     required: true
   app-pool-name:
     description: "Application pool name"
-    required: false
-    default: ${{ inputs.website-name }}
+    required: true
   server-computer-name:
     description: "IIS server computer name"
     required: true
