@@ -1,9 +1,13 @@
-name: "Simply Web Deploy"
-description: "Deploy projects directly to Simply IIS"
+name: "SmarterASP.NET Web Deploy"
+description: "Deploy projects directly to SmarterASP.NET IIS"
 inputs:
   website-name:
     description: "IIS website name"
     required: true
+  app-pool-name:
+    description: "Application pool name"
+    required: false
+    default: ${{ inputs.website-name }}
   server-computer-name:
     description: "IIS server computer name"
     required: true
@@ -33,7 +37,7 @@ runs:
       run: >
         ${{ github.action_path }}/Scripts/Set-ApplicationPool.ps1
         StopAppPool
-        ${{ inputs.website-name }}
+        ${{ inputs.app-pool-name }}
         ${{ inputs.server-computer-name }}
         ${{ inputs.server-username }}
         ${{ inputs.server-password }}
@@ -53,7 +57,7 @@ runs:
       run: >
         ${{ github.action_path }}/Scripts/Set-ApplicationPool.ps1
         StartAppPool
-        ${{ inputs.website-name }}
+        ${{ inputs.app-pool-name }}
         ${{ inputs.server-computer-name }}
         ${{ inputs.server-username }}
         ${{ inputs.server-password }}

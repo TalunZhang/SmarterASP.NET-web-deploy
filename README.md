@@ -1,5 +1,5 @@
-## Simply Web Deploy
-Automatically deploy your projects to Simply.com with Web Deploy using this GitHub action. 
+## SmarterASP.NET Web Deploy
+Automatically deploy your projects to SmarterASP.NET with Web Deploy using this GitHub action. 
 
 This action utilizes Microsoft’s own `Web Deploy 3.0+` executable, which you can read everything about [here](https://docs.microsoft.com/en-us/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages). Further documentation of the rules and parameters can also be seen [here](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/dd568992(v=ws.10)).
 
@@ -8,18 +8,18 @@ This action utilizes Microsoft’s own `Web Deploy 3.0+` executable, which you c
 ### Example
 Place the following in `/.github/workflows/main.yml`
 ```yml
-name: Build project and deploy to Simply
+name: Build project and deploy to SmarterASP.NET
 on: [push]
 
 jobs:
   build_and_deploy:
-    name: Build package and deploy to Simply
+    name: Build package and deploy to SmarterASP.NET
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v1
 
-      - name: Deploy to Simply
-        uses: RasmusBuchholdt/simply-web-deploy@2.0.0
+      - name: Deploy to SmarterASP.NET
+        uses: jahbenjah/SmarterASP.NET-web-deploy@1.0.0
         with:
           website-name: ${{ secrets.WEBSITE_NAME }}
           server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
@@ -60,6 +60,8 @@ To add a secret to your repository go to the `Settings` tab, followed by `Secret
 | `source-path`           | No | `\my-build\dist\`  | `\publish\` | The path to the source directory that will be deployed |
 | `target-path`           | No | `/sub-directory/`  | `''` (Root of your website)  | The path where the source directory will be deployed (relative to website root) |
 | `target-delete`         | No | `true`            | `false` | Delete files on the target computer that do not exist on the source computer |
+| `app-pool-name`          | No | `app-pool-name` | | Application Pool server |
+
 ---
 
 # Common examples
