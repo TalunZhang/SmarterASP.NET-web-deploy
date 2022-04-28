@@ -20,12 +20,18 @@ $targetPath = $recycleApp + $destination
 [System.Collections.ArrayList]$msdeployArguments = 
     "-verb:sync",
     "-allowUntrusted",
+    "-enableRule:DoNotDeleteRule"
+    "-enableRule:AppOffline"
+    "-disableLink:AppPoolExtension",
+    "disableLink:ContentExtension",
+    "-disableLink:CertificateExtension"
     "-source:contentPath=${contentPath}," +
-    ("-dest:" + 
+    ("-dest:auto" + 
         "contentPath=${targetPath}," +
         "computerName=${computerNameArgument}," + 
         "username=${username}," +
         "password=${password}," +
+        "IncludeAcls='False," +
         "AuthType='Basic'"
     )
 
