@@ -20,8 +20,8 @@ $targetPath = $recycleApp + $destination
 [System.Collections.ArrayList]$msdeployArguments = 
     "-verb:sync",
     "-allowUntrusted",
-    "-enableRule:DoNotDeleteRule"
-    "-enableRule:AppOffline"
+    "-enableRule:DoNotDeleteRule",
+    "-enableRule:AppOffline",
     "-disableLink:AppPoolExtension",
     "-disableLink:ContentExtension",
     "-disableLink:CertificateExtension",
