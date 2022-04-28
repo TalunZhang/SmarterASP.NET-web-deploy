@@ -23,10 +23,10 @@ $targetPath = $recycleApp + $destination
     "-enableRule:DoNotDeleteRule"
     "-enableRule:AppOffline"
     "-disableLink:AppPoolExtension",
-    "disableLink:ContentExtension",
+    "-disableLink:ContentExtension",
     "-disableLink:CertificateExtension"
     "-source:contentPath=${contentPath}," +
-    ("-dest:auto" + 
+    ("-dest:" + 
         "contentPath=${targetPath}," +
         "computerName=${computerNameArgument}," + 
         "username=${username}," +
