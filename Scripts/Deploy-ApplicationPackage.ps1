@@ -31,7 +31,7 @@ $targetPath = $recycleApp + $destination
         "computerName=${computerNameArgument}," + 
         "username=${username}," +
         "password=${password}," +
-        "IncludeAcls='False," +
+        "IncludeAcls='False'," +
         "AuthType='Basic'"
     )
 
