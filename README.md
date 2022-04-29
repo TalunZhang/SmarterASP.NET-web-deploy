@@ -31,11 +31,6 @@ jobs:
 
 ---
 
-### Requirements
-- Administrator access to the simply.com account, to access the required credentials.
-
----
-
 ### Setup
 1. Locate the repository you want to automate Simply web deployment in.
 2. Select the `Actions` tab.
@@ -60,7 +55,6 @@ To add a secret to your repository go to the `Settings` tab, followed by `Secret
 | `source-path`           | No | `\my-build\dist\`  | `\publish\` | The path to the source directory that will be deployed |
 | `target-path`           | No | `/sub-directory/`  | `''` (Root of your website)  | The path where the source directory will be deployed (relative to website root) |
 | `target-delete`         | No | `true`            | `false` | Delete files on the target computer that do not exist on the source computer |
-| `app-pool-name`          | Yes | `app-pool-name` | | Application Pool server |
 
 ---
 
@@ -96,7 +90,8 @@ jobs:
         run: dotnet test
 
       - name: Deploy to Simply
-        uses: RasmusBuchholdt/simply-web-deploy@2.0.0
+        - name: SmarterASP.NET Web Deploy
+        uses: jahbenjah/SmarterASP.NET-web-deploy@1.0.0.alpha.8
         with:
           website-name: ${{ secrets.WEBSITE_NAME }}
           server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
@@ -121,7 +116,7 @@ jobs:
       - run: npm ci && ng build --configuration production --output-path=dist
 
       - name: Deploy to Simply
-        uses: RasmusBuchholdt/simply-web-deploy@2.0.0
+        uses: jahbenjah/SmarterASP.NET-web-deploy@1.0.0.alpha.8
         with:
           website-name: ${{ secrets.WEBSITE_NAME }}
           server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}

@@ -4,9 +4,6 @@ inputs:
   website-name:
     description: "IIS website name"
     required: true
-  app-pool-name:
-    description: "Application pool name"
-    required: true
   server-computer-name:
     description: "IIS server computer name"
     required: true
@@ -31,15 +28,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Stop Application Pool
-    #   shell: pwsh
-    #   run: >
-    #     ${{ github.action_path }}/Scripts/Set-ApplicationPool.ps1
-    #     StopAppPool
-    #     ${{ inputs.app-pool-name }}
-    #     ${{ inputs.server-computer-name }}
-    #     ${{ inputs.server-username }}
-    #     ${{ inputs.server-password }}
     - name: Deploy Application
       shell: pwsh
       run: >
@@ -51,15 +39,6 @@ runs:
         ${{ inputs.server-username }}
         ${{ inputs.server-password }}
         ${{ inputs.target-delete }}
-    # - name: Start Application Pool
-    #   shell: pwsh
-    #   run: >
-    #     ${{ github.action_path }}/Scripts/Set-ApplicationPool.ps1
-    #     StartAppPool
-    #     ${{ inputs.app-pool-name }}
-    #     ${{ inputs.server-computer-name }}
-    #     ${{ inputs.server-username }}
-    #     ${{ inputs.server-password }}
 branding:
   icon: "upload-cloud"
-  color: "purple"
+  color: "blue"
